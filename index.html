@@ -5,18 +5,131 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="icon" href="favicon.png">
 
-    <title>Hello, world!</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <title>Программное средство для поиск наилучшей альтернативы на основе принципа Кондорсе (на примере производства автомобилей)</title>
+
+    <!--<base href="/">-->
+
+    <!--<style>-->
+        <!--#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }-->
+        <!--#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }-->
+        <!--#sortable li span { position: absolute; margin-left: -1.3em; }-->
+    <!--</style>-->
+    <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+
+    <script>
+
+    </script>
 </head>
 <body>
-<h1>Hello, world!</h1>
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">САИПИС</a>
+    <!--<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
+    <!--<ul class="navbar-nav px-3">-->
+        <!--<li class="nav-item text-nowrap">-->
+            <!--<a class="nav-link" href="#">Sign out</a>-->
+        <!--</li>-->
+    <!--</ul>-->
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>История</span>
+                    <a class="d-flex align-items-center text-muted" href="#">
+                        <span data-feather="plus-circle"></span>
+                    </a>
+                </h6>
+                <ul class="nav flex-column mb-2">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <span data-feather="home"></span>
+                            Dashboard <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file-text"></span>
+                            Last quarter
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+            <h1 class="pt-3 pb-2 mb-3">Поиск наилучшей альтернативы на основе принципа Кондорсе</h1>
+
+            <div class="card" id="rankingAlternatives">
+                <div class="card-header">
+                    Ранжирование альтернатив
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered" id="rankingAlternativesTable">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>
+                                <ul class="list-group"  id="sortable">
+                                    <li class="list-group-item">Cras justo odio</li>
+                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                    <li class="list-group-item">Morbi leo risus</li>
+                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                </ul>
+                            </td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="container text-left">
+                <form id="startData">
+                    <div class="form-group">
+                        <label for="numberOfAlternatives">Количество альтернатив</label>
+                        <input type="number" class="form-control" id="numberOfAlternatives" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="numberOfExperts">Количество экспертов</label>
+                        <input type="number" class="form-control" id="numberOfExperts" placeholder="">
+                    </div>
+                    <input type="submit" value="Продолжить" class="btn">
+                </form>
+            </div>
+
+        </main>
+    </div>
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
-<script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+<script src="assets/js/method.js"></script>
 </body>
 </html>
