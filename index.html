@@ -17,9 +17,9 @@
     <!--<base href="/">-->
 
     <!--<style>-->
-        <!--#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }-->
-        <!--#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }-->
-        <!--#sortable li span { position: absolute; margin-left: -1.3em; }-->
+    <!--#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }-->
+    #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+    #sortable li span { position: absolute; margin-left: -1.3em; }
     <!--</style>-->
     <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
 
@@ -32,9 +32,9 @@
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">САИПИС</a>
     <!--<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
     <!--<ul class="navbar-nav px-3">-->
-        <!--<li class="nav-item text-nowrap">-->
-            <!--<a class="nav-link" href="#">Sign out</a>-->
-        <!--</li>-->
+    <!--<li class="nav-item text-nowrap">-->
+    <!--<a class="nav-link" href="#">Sign out</a>-->
+    <!--</li>-->
     <!--</ul>-->
 </nav>
 
@@ -76,31 +76,13 @@
                 <div class="card-body">
                     <table class="table table-bordered" id="rankingAlternativesTable">
                         <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
+                        <tr></tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>
-                                <ul class="list-group"  id="sortable">
-                                    <li class="list-group-item">Cras justo odio</li>
-                                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                                    <li class="list-group-item">Morbi leo risus</li>
-                                    <li class="list-group-item">Porta ac consectetur ac</li>
-                                    <li class="list-group-item">Vestibulum at eros</li>
-                                </ul>
-                            </td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
+                        <tr></tr>
                         </tbody>
                     </table>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="#" class="btn btn-primary">Рассчитать показатели</a>
                 </div>
             </div>
 
@@ -108,11 +90,11 @@
                 <form id="startData">
                     <div class="form-group">
                         <label for="numberOfAlternatives">Количество альтернатив</label>
-                        <input type="number" class="form-control" id="numberOfAlternatives" placeholder="">
+                        <input type="number" min="2" value="2" class="form-control" id="numberOfAlternatives" placeholder="Количество альтернатив" autofocus required>
                     </div>
                     <div class="form-group">
                         <label for="numberOfExperts">Количество экспертов</label>
-                        <input type="number" class="form-control" id="numberOfExperts" placeholder="">
+                        <input type="number" min="2" value="2" class="form-control" id="numberOfExperts" placeholder="Количество экспертов" required>
                     </div>
                     <input type="submit" value="Продолжить" class="btn">
                 </form>
