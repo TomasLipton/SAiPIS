@@ -115,8 +115,11 @@ body {
 *my
  */
 
-#rankingAlternatives{
+.hidden{
     display: none;
+}
+.displayed{
+    display: block;
 }
 
 .container{

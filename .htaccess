@@ -1,0 +1,16 @@
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond %{REQUEST_URI} !^.*\.(jpg|css|js|gif|png)$ [NC]
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+#запрет просмотра директорий
+Options All -Indexes
+
+#запрет прямого доступа к файлам с такими расширениями
+<FilesMatch ".(htaccess|htpasswd|ini|phps|fla|psd|log|sh|txt|json)$">
+ Order Allow,Deny
+ Deny from all
+</FilesMatch>
