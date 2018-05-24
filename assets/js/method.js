@@ -9,12 +9,17 @@ window.onload = function () {
         let alternativesTable = createRankingAlternativesTable(this.numberOfAlternatives.value, this.numberOfExperts.value);
 
         start.onclick = function () {
+
+            $('#start').remove();
             let preferredAlternativesTable = createPreferredAlternativesTable(alternativesTable);
             findBestAlternative(preferredAlternativesTable);
+            $('#saveCalculations').click(saveCalculating);
+            $('.hidden').addClass('displayed');
         };
 
         startData.remove();
-        $('.hidden').addClass('displayed');
+        // $('.hidden').addClass('displayed');
+        rankingAlternatives.style.display = 'block';
         return false;
     };
 
@@ -63,7 +68,7 @@ window.onload = function () {
                 if (i === j) {
                     $('#preferredAlternativesTable tbody tr:last').append('<td></td>');
                 } else {
-                    $('#preferredAlternativesTable tbody tr:last').append('<td>' + getAlternativeRating(i, j)+ '</td>');
+                    $('#preferredAlternativesTable tbody tr:last').append('<td>' + getAlternativeRating(i, j) + '</td>');
                 }
 
             }
@@ -79,10 +84,10 @@ window.onload = function () {
         for (let j = 0; j < td.length; j++) {
             let lis = $(td[j]).find('li');
             for (let i = 0; i < lis.length; i++) {
-                if($(lis[i]).data('alternative') == y){
+                if ($(lis[i]).data('alternative') == y) {
                     result++;
-                }else if($(lis[i]).data('alternative') == x){
-                   break;
+                } else if ($(lis[i]).data('alternative') == x) {
+                    break;
                 }
             }
         }
@@ -90,25 +95,25 @@ window.onload = function () {
     }
 
     function findBestAlternative(preferredAlternativesTable) {
-       let rows = $(preferredAlternativesTable).find('tbody tr');
+        let rows = $(preferredAlternativesTable).find('tbody tr');
 
         for (let i = 0; i < $(rows).length; i++) {
             let td = $(rows[i]).find('td');
             for (let j = i; j < $(td).length; j++) {
-                if($(td[j]).text() == ''){
+                if ($(td[j]).text() == '') {
                     continue;
                 }
 
                 let color = getRandomArbitrary(100000, 900000);
 
-                if (+$(td[j]).text() > +$($(rows[j]).find('td')[i]).text()){
+                if (+$(td[j]).text() > +$($(rows[j]).find('td')[i]).text()) {
                     // console.log($(td[j]).text() + '-' + $($(rows[j]).find('td')[i]).text());
                     // continue;
                 }
 
 
-                // $(td[j]).attr('style', 'background:#' + color);
-                // $($(rows[j]).find('td')[i]).attr('style', 'background:#' + color);
+                $(td[j]).attr('style', 'background:#' + color);
+                $($(rows[j]).find('td')[i]).attr('style', 'background:#' + color);
 
             }
 
@@ -117,6 +122,23 @@ window.onload = function () {
 
     function getRandomArbitrary(min, max) {
         return Math.round(Math.random() * (max - min) + min);
+    }
+
+    function saveCalculating() {
+        let xhr = new XMLHttpRequest();
+
+        let body = 'data=' + encodeURIComponent(
+            document.getElementById('saving').innerHTML
+            ) +
+            '&title=' + prompt('Введите название')
+        ;
+
+        xhr.open("POST", '/calculations/save/', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        xhr.send(body);
+
+        // window.location.replace("/calculations/one/");
     }
 
 };

@@ -7,5 +7,5 @@ use App\Model;
 class Calculations
     extends Model
 {
-    const TABLE = 'calculating';
+    const TABLE = 'calculations';
 }

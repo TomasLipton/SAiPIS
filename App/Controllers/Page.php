@@ -6,7 +6,7 @@ use App\Controller;
 use \App\Models\Calculations as CalculatingModel;
 use \App\Models\User as UserModel;
 
-class Index
+class Page
     extends Controller
 {
     protected function actionDefault()

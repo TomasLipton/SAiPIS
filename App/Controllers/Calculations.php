@@ -6,7 +6,7 @@ namespace App\Controllers;
 use App\Controller;
 use \App\Models\Calculations as CalculatingModel;
 
-class Calculating
+class Calculations
     extends Controller
 {
     public function actionAll()
@@ -27,7 +27,7 @@ class Calculating
     {
         $calculating = new CalculatingModel();
         $calculating->owner_id = $this->user->id;
-        $calculating->company_name = $_POST['companyName'];
+        $calculating->title = $_POST['title'];
         $calculating->data = $_POST['data'];
         $calculating->insert();
     }

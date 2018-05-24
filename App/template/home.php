@@ -25,63 +25,67 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
             <h1 class="pt-3 pb-2 mb-3">Поиск наилучшей альтернативы на основе принципа Кондорсе</h1>
+            <div id="saving">
 
-            <div class="card mb-5 hidden" id="rankingAlternatives">
-                <div class="card-header">
-                    Ранжирование альтернатив
-                </div>
-                <div class="card-body">
-                    <table class="table table-bordered" id="rankingAlternativesTable">
-                        <thead>
-                        <tr></tr>
-                        </thead>
-                        <tbody>
-                        <tr></tr>
-                        </tbody>
-                    </table>
-                    <input type="submit" class="btn" id="start" value="Вычислить">
-                </div>
-            </div>
 
-            <div class="card mb-5 hidden" id="preferredAlternatives">
-                <div class="card-header">
-                    Предпочтение альтернати в парных предпочтениях
-                </div>
-                <div class="card-body">
-                    <table class="table table-bordered" id="preferredAlternativesTable">
-                        <thead>
-                        <tr></tr>
-                        </thead>
-                        <tbody>
-                        <tr></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="card mb-5 hidden" id="bestAlternative">
-                <div class="card-header">
-                    Предпочтение альтернати в парных предпочтениях
-                </div>
-                <div class="card-body">
-                    <p>Привилу Кондорса удовлетворяет альтернатива а3</p>
-                </div>
-            </div>
-
-            <div class="container text-left">
-                <form id="startData">
-                    <div class="form-group">
-                        <label for="numberOfAlternatives">Количество альтернатив</label>
-                        <input type="number" min="2" value="5" class="form-control" id="numberOfAlternatives" placeholder="Количество альтернатив" autofocus required>
+                <div class="card mb-5 hidden" id="rankingAlternatives">
+                    <div class="card-header">
+                        Ранжирование альтернатив
                     </div>
-                    <div class="form-group">
-                        <label for="numberOfExperts">Количество экспертов</label>
-                        <input type="number" min="2" value="5" class="form-control" id="numberOfExperts" placeholder="Количество экспертов" required>
+                    <div class="card-body">
+                        <table class="table table-bordered" id="rankingAlternativesTable">
+                            <thead>
+                            <tr></tr>
+                            </thead>
+                            <tbody>
+                            <tr></tr>
+                            </tbody>
+                        </table>
+                        <input type="submit" class="btn" id="start" value="Вычислить">
+                        <input type="submit" class="btn hidden" id="saveCalculations" value="Сохранить">
                     </div>
-                    <input type="submit" value="Продолжить" class="btn">
-                </form>
-            </div>
+                </div>
 
+                <div class="card mb-5 hidden" id="preferredAlternatives">
+                    <div class="card-header">
+                        Предпочтение альтернати в парных предпочтениях
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered" id="preferredAlternativesTable">
+                            <thead>
+                            <tr></tr>
+                            </thead>
+                            <tbody>
+                            <tr></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card mb-5 hidden" id="bestAlternative">
+                    <div class="card-header">
+                        Предпочтение альтернати в парных предпочтениях
+                    </div>
+                    <div class="card-body">
+                        <p>Привилу Кондорса удовлетворяет альтернатива а3</p>
+                    </div>
+                </div>
+
+                <div class="container text-left">
+                    <form id="startData">
+                        <div class="form-group">
+                            <label for="numberOfAlternatives">Количество альтернатив</label>
+                            <input type="number" min="2" value="5" class="form-control" id="numberOfAlternatives" placeholder="Количество альтернатив" autofocus
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="numberOfExperts">Количество экспертов</label>
+                            <input type="number" min="2" value="5" class="form-control" id="numberOfExperts" placeholder="Количество экспертов" required>
+                        </div>
+                        <input type="submit" value="Продолжить" class="btn">
+                    </form>
+                </div>
+            </div>
         </main>
     </div>
 </div>

@@ -16,8 +16,9 @@ class User
 
     public function actionAuth()
     {
-        $user = UserModel::findByColumn('username', trim($_POST['userLogin']))[0];
-        if ($user != false && $user->password == md5(trim($_POST['userPassword']))) {
+        $user = UserModel::findByColumn('username', trim($_POST['username']))[0];
+
+        if ($user != false && $user->password == md5(trim($_POST['password']))) {
             $_SESSION['user']['isIn'] = true;
             $_SESSION['user']['id'] = $user->id;
             header('Location: /');

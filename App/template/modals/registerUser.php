@@ -8,21 +8,21 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" action="/?ctrl=user&act=register">
+            <form method="post" action="/user/register/">
                 <div class="modal-body">
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Имя пользователя</label>
                         <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="Имя пользователя">
+                               placeholder="Имя пользователя" required autofocus>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Пароль</label>
-                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Пароль">
+                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Пароль" required>
                     </div>
                     <div class="form-check">
                         <input type="checkbox" name="isAdmin" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Сделать админом </label>
+                        <label class="form-check-label" for="exampleCheck1">Назначить администратором </label>
                     </div>
 
                 </div>
