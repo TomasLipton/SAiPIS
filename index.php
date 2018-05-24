@@ -17,5 +17,9 @@ try {
     $controller = new $controllerClassName();
     $controller->action($action, $data);
 }catch (Error $e){
+
     exit('Произошла ошибка!');
+}catch (\App\Exceptions\Db $e){
+    print_r($e);
+    exit('Произошла ошибка БД!');
 }

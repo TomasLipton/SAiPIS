@@ -9,7 +9,6 @@ window.onload = function () {
         let alternativesTable = createRankingAlternativesTable(this.numberOfAlternatives.value, this.numberOfExperts.value);
 
         start.onclick = function () {
-
             $('#start').remove();
             let preferredAlternativesTable = createPreferredAlternativesTable(alternativesTable);
             findBestAlternative(preferredAlternativesTable);
@@ -18,7 +17,6 @@ window.onload = function () {
         };
 
         startData.remove();
-        // $('.hidden').addClass('displayed');
         rankingAlternatives.style.display = 'block';
         return false;
     };
@@ -29,10 +27,11 @@ window.onload = function () {
 
         for (let i = 0; i < numberOfExperts; i++) {
             $("#rankingAlternativesTable thead tr:last").append("<td>Эксперт №" + (i + 1) + "</td>");
+
             $("#rankingAlternativesTable tr:last").append("<td><ul class=\"list-group sortable\"></td>");
 
             for (let j = 0; j < numberOfAlternatives; j++) {
-                let li = $('<li></li>').attr('data-alternative', j).text("Альтернатива №" + j).addClass('list-group-item alternative' + j).on('dblclick', editableAlternatives);
+                let li = $('<li></li>').attr('data-alternative', j).text("Альтернатива №" + (j+1)).addClass('list-group-item alternative' + j).on('dblclick', editableAlternatives);
                 $("#rankingAlternativesTable ul:last").append(li).sortable();
                 if (alternatives.length != numberOfAlternatives) {
                     alternatives.push(li);
@@ -59,11 +58,11 @@ window.onload = function () {
         $('#preferredAlternativesTable thead tr:last').append('<td></td>');
         for (let j = 0; j < alternatives.length; j++) {
 
-            $('#preferredAlternativesTable thead tr:last').append('<td>' + alternatives[j][0].innerText + '</td>');
+            $('#preferredAlternativesTable thead tr:last').append('<td class="alternative' + j +'">' + alternatives[j][0].innerText + '</td>');
 
             $('#preferredAlternativesTable tbody').append('<tr>' + '</tr>');
 
-            $('#preferredAlternativesTable tbody tr:last').append('<td>' + alternatives[j][0].innerText + '</td>');
+            $('#preferredAlternativesTable tbody tr:last').append('<td class="alternative' + j +'">' + alternatives[j][0].innerText + '</td>');
             for (let i = 0; i < alternatives.length; i++) {
                 if (i === j) {
                     $('#preferredAlternativesTable tbody tr:last').append('<td></td>');
@@ -95,48 +94,65 @@ window.onload = function () {
     }
 
     function findBestAlternative(preferredAlternativesTable) {
+
         let rows = $(preferredAlternativesTable).find('tbody tr');
 
         for (let i = 0; i < $(rows).length; i++) {
             let td = $(rows[i]).find('td');
+            let theBest = 0;
+
+            if (theBest == $(td).length){
+                $('#theBestAlternative').text(i+1)
+                break;
+            }
+
             for (let j = i; j < $(td).length; j++) {
                 if ($(td[j]).text() == '') {
                     continue;
                 }
 
+
                 let color = getRandomArbitrary(100000, 900000);
 
                 if (+$(td[j]).text() > +$($(rows[j]).find('td')[i]).text()) {
-                    // console.log($(td[j]).text() + '-' + $($(rows[j]).find('td')[i]).text());
-                    // continue;
+
+                    theBest++;
+
+                    $(td[j]).attr('style', 'background:#' + color);
+                    $($(rows[j]).find('td')[i]).attr('style', 'background:#' + color);
                 }
-
-
-                $(td[j]).attr('style', 'background:#' + color);
-                $($(rows[j]).find('td')[i]).attr('style', 'background:#' + color);
 
             }
 
         }
     }
 
-    function getRandomArbitrary(min, max) {
-        return Math.round(Math.random() * (max - min) + min);
-    }
-
     function saveCalculating() {
+
         let xhr = new XMLHttpRequest();
+
+        let title = prompt('Новое название');
+        if (title.length < 1) {
+            alert('Название не может быть пустым');
+        } else {
+            this.remove();
+        }
 
         let body = 'data=' + encodeURIComponent(
             document.getElementById('saving').innerHTML
             ) +
-            '&title=' + prompt('Введите название')
+            '&title=' + title
         ;
 
         xhr.open("POST", '/calculations/save/', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
         xhr.send(body);
+
+        xhr.onreadystatechange = function() {
+
+            console.log( this.responseText );
+        }
 
         // window.location.replace("/calculations/one/");
     }

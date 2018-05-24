@@ -29,10 +29,12 @@ class Calculations
         $calculating->owner_id = $this->user->id;
         $calculating->title = $_POST['title'];
         $calculating->data = $_POST['data'];
-        $calculating->insert();
+        $calculating->save();
+        print_r($calculating);
     }
 
-    public function actionDelete(){
+    public function actionDelete()
+    {
         $id = trim($_GET['id']);
         $calculation = CalculatingModel::findById($id);
         $calculation->delete();

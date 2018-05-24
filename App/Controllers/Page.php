@@ -15,6 +15,10 @@ class Page
     }
 
     protected function actionAdminPanel(){
+        if ($this->user->role != 'admin'){
+            $this->actionDefault();
+            exit();
+        }
         $calculations = CalculatingModel::findAll();
         foreach ($calculations as $calculation){
             $calculation->owner = UserModel::findById($calculation->owner_id);

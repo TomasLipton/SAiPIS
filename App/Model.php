@@ -2,17 +2,19 @@
 
 namespace App;
 
+use App\Exceptions\Db as DbException;
+
 abstract class Model
 {
     public static function findAll()
     {
-
         $db = new Db();
-        return $db->query(
+        $result =  $db->query(
             'SELECT * FROM ' . static::TABLE,
             [],
             static::class
         );
+        return $result;
     }
 
     public static function findById($id)
@@ -25,18 +27,18 @@ abstract class Model
         )[0];
 
         if (empty($result)) {
-            return false;
+//            throw new DbException();
         } else {
             return $result;
         }
     }
 
-    public function isNew()
+    private function isNew()
     {
         return empty($this->id);
     }
 
-    public function insert()
+    private function insert()
     {
         if (!$this->isNew()) {
             return;
@@ -69,7 +71,7 @@ VALUES
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE ' . $column . '=:value';
         $res = $db->query($sql, [':value' => $value], static::class);
         if (empty($res)) {
-            return false;
+//            throw new DbException();
         } else {
             return $res[0];
         }
@@ -81,13 +83,13 @@ VALUES
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE ' . $column . '=:value';
         $res = $db->query($sql, [':value' => $value], static::class);
         if (empty($res)) {
-            return false;
+//            throw new DbException();
         } else {
             return $res;
         }
     }
 
-    protected function update()
+    private function update()
     {
         $cols = [];
         $data = [];

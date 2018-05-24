@@ -67,7 +67,7 @@
                         Предпочтение альтернати в парных предпочтениях
                     </div>
                     <div class="card-body">
-                        <p>Привилу Кондорса удовлетворяет альтернатива а3</p>
+                        <p>Привилу Кондорса удовлетворяет альтернатива №<span id="theBestAlternative"></span> </p>
                     </div>
                 </div>
 
@@ -75,12 +75,12 @@
                     <form id="startData">
                         <div class="form-group">
                             <label for="numberOfAlternatives">Количество альтернатив</label>
-                            <input type="number" min="2" value="5" class="form-control" id="numberOfAlternatives" placeholder="Количество альтернатив" autofocus
+                            <input type="number" min="2" max="100" value="5" class="form-control" id="numberOfAlternatives" placeholder="Количество альтернатив" autofocus
                                    required>
                         </div>
                         <div class="form-group">
                             <label for="numberOfExperts">Количество экспертов</label>
-                            <input type="number" min="2" value="5" class="form-control" id="numberOfExperts" placeholder="Количество экспертов" required>
+                            <input type="number" min="2" max="100" value="5" class="form-control" id="numberOfExperts" placeholder="Количество экспертов" required>
                         </div>
                         <input type="submit" value="Продолжить" class="btn">
                     </form>

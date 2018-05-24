@@ -35,9 +35,12 @@
                     <span data-feather="plus-circle"></span>
                 </a>
             </h6>
+            <?php if (!empty($errors['login'])):?>
+
+                <div class="alert alert-danger text-left mb-0">Нет такого пользователя или пароля</div>
+            <?php endif; ?>
             <form method="post" action="/user/auth/">
                 <div class="modal-body">
-
                     <div class="form-group">
                         <label for="exampleInputEmail1">Имя пользователя</label>
                         <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
